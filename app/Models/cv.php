@@ -9,9 +9,9 @@ class cv extends Model
 {
     use HasFactory;
 
-    protected $table='cv';
+    protected $table = 'cv';
 
-    protected $fillabel=[
+    protected $fillabel = [
         'name',
         'position',
         'dateapply',

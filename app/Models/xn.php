@@ -9,8 +9,8 @@ class xn extends Model
 {
     use HasFactory;
 
-    protected $table;
-    protected $fillable=[
+    protected $table = 'xn';
+    protected $fillable = [
         'dateinterview',
         'id_user',
         'id_cv',
