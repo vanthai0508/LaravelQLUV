@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class cv extends Model
 {
     use HasFactory;
-
+    
     protected $table = 'cv';
 
     protected $fillabel = [
@@ -18,7 +18,11 @@ class cv extends Model
         'phone',
         'file',
         'id_user',
-        'id_cv',
+        'id',
         'status'
     ];
+
+    // public function user(){
+    //     $this->belongsTo('user','id_user');
+    // }
 }

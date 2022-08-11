@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dateTime('dateinterview');
             $table->integer('id_user');
             $table->integer('id_cv');
-            $table->increments('id_xn');
+            $table->increments('id');
             $table->integer('status');
         });
     }

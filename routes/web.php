@@ -14,8 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('user/create');
+    return view('welcome');
 });
+Route::get('user/create','App\Http\Controllers\UserController@createView');
 
-// Route::get('home','');
-// Route::get('user/add','');
+Route::post('user/create','App\Http\Controllers\UserController@create');
+
+Route::get('user/login','App\Http\Controllers\UserController@loginView');
+
+Route::post('user/login','App\Http\Controllers\UserController@login');
+
+Route::get('cv/apply','App\Http\Controllers\CVController@apply');
+
+Route::post('cv/apply','App\Http\Controllers\CVController@apply');
+
+
+

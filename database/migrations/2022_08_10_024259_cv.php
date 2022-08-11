@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('phone');
             $table->string('file');
             $table->integer('id_user');
-            $table->increments('id_cv');
+            $table->increments('id');
             $table->integer('status');
+            
         });
     }
 
