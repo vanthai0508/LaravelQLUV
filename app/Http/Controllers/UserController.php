@@ -56,7 +56,7 @@ class UserController extends Controller
         // {
             if(Auth::attempt(['username' => $username, 'password' => $password]))
             {
-                return redirect('cv/apply');
+                return redirect('cv/create');
             }
             else
             {
