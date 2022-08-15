@@ -29,45 +29,42 @@ Route::get('user/login', 'App\Http\Controllers\UserController@loginView');
 
 Route::post('user/login', 'App\Http\Controllers\UserController@login');
 
-Route::get('cv/apply', 'App\Http\Controllers\CVController@applyView');
+Route::get('cv/create', 'App\Http\Controllers\CVController@applyView');
 
-Route::post('cv/apply', 'App\Http\Controllers\CVController@create');
+Route::post('cv/create', 'App\Http\Controllers\CVController@create');
 
 Route::get('/test', function()
 {
-    $cvs=cv::all();
-    $users=User::all();
+    // $cvs=cv::all();
+    // $users=User::all();
  
     
     
     
-    foreach($cvs as $cv)
-    {
-        echo $cv->user->username;
-      //  echo $user->cv->phone;
+    // foreach($cvs as $cv)
+    // {
+    //     echo $cv->user->username;
+    //   //  echo $user->cv->phone;
          
-         echo '<br>';
-        // if($user->cv()!=null)
-        // {
-        //     dd($user);
-        // }
+    //      echo '<br>';
+    //     // if($user->cv()!=null)
+    //     // {
+    //     //     dd($user);
+    //     // }
        
         
-    }
-    foreach($users as $user)
-    {
-        echo $user->cv;
-      //  echo $user->cv->phone;
+    // }
+    // foreach($users as $user)
+    // {
+    //     echo $user->cv;
+    //   //  echo $user->cv->phone;
          
-         echo '<br>';
-        // if($user->cv()!=null)
-        // {
-        //     dd($user);
-        // }
+    //      echo '<br>';
+    //     // if($user->cv()!=null)
+    //     // {
+    //     //     dd($user);
+    //     // }
        
-        break;
-    }
+    //     break;
+    // }   
 });
-
-
-

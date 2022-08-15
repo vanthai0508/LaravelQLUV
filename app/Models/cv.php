@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class cv extends Model
 {
@@ -15,16 +16,14 @@ class cv extends Model
     public $atributes = [
         'status' => 1
     ];
-    protected $fillable = ['title'];
+  //  protected $fillable = ['title'];
 
     protected $fillabel = [
-        'name',
+        'name' ,
         'position',
-        'dateapply',
         'phone',
         'file',
         'id_user',
-        'id',
         'status'
     ];
 

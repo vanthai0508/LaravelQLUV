@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('xn',function(Blueprint $table)
         {
             $table->dateTime('dateinterview');
-            $table->integer('id_user');
+            $table->integer('id_user')->unsigned()->nullable();
             $table->foreign('id_user')->references('id')->on('users');
-            $table->integer('id_cv');
+            $table->integer('id_cv')->unsigned()->nullable();
             $table->foreign('id_cv')->references('id')->on('cv');
             $table->increments('id');
             $table->integer('status');

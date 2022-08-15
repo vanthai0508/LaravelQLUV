@@ -13,7 +13,7 @@ class ApplyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -31,4 +31,15 @@ class ApplyRequest extends FormRequest
 
         ];
     }
+    
+    public function messages()
+    {
+        return [
+            'name.required' => 'Vui long nhap name',
+            'position.required' => 'Vui long nhap position',
+            'phone.required' => 'Vui long nhap phonr'
+        ];
+    }
+
+     
 }

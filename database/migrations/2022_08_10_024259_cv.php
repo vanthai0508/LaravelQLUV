@@ -15,13 +15,15 @@ return new class extends Migration
     {
         Schema::create('cv',function(Blueprint $table)
         {
+            $table->increments('id');
             $table->string('name');
             $table->string('position');
             $table->timestamps();
             $table->string('phone');
             $table->string('file');
-            $table->integer('id_user');
-            $table->increments('id');
+            $table->integer('id_user')->unsigned()->nullable();
+        //    $table->foreign('id_user')->references('id')->on('users');
+            
             $table->integer('status');
             
         });

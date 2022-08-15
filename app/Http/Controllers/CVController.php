@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ApplyRequest;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
 use App\Repositories\Eloquent\CVRepository;
@@ -29,15 +30,18 @@ class CVController extends Controller
 
     public function applyView()
     {
-        return view('cv/apply');
+        return view('cv/create');
     }
 
-    public function create(Request $request)
+    public function create(ApplyRequest $request)
     {   
         $user=Auth::user();
 
         $id=$user->id;
-        if($this->cv->create($request)->$id)
+        echo $id;
+
+     //   return view('user/create');
+        if($this->cv->create($request))
         {
             Session::flash('success', 'thanh cong ');
         }
