@@ -17,13 +17,17 @@ return new class extends Migration
         {
             $table->string('name');
             $table->string('position');
-            $table->dateTime('dateapply');
+            $table->timestamps();
             $table->string('phone');
             $table->string('file');
             $table->integer('id_user');
             $table->increments('id');
             $table->integer('status');
             
+        });
+
+        Schema::table('cv',function(Blueprint $table){
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 

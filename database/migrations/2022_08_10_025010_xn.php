@@ -17,7 +17,9 @@ return new class extends Migration
         {
             $table->dateTime('dateinterview');
             $table->integer('id_user');
+            $table->foreign('id_user')->references('id')->on('users');
             $table->integer('id_cv');
+            $table->foreign('id_cv')->references('id')->on('cv');
             $table->increments('id');
             $table->integer('status');
         });

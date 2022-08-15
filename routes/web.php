@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use App\Models\cv;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,19 +16,58 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('test');
 });
-Route::get('user/create','App\Http\Controllers\UserController@createView');
 
-Route::post('user/create','App\Http\Controllers\UserController@create');
+Route::get('cv/list', 'App\Http\Controllers\CVController@list');
 
-Route::get('user/login','App\Http\Controllers\UserController@loginView');
+Route::get('user/create', 'App\Http\Controllers\UserController@createView');
 
-Route::post('user/login','App\Http\Controllers\UserController@login');
+Route::post('user/create', 'App\Http\Controllers\UserController@create');
 
-Route::get('cv/apply','App\Http\Controllers\CVController@apply');
+Route::get('user/login', 'App\Http\Controllers\UserController@loginView');
 
-Route::post('cv/apply','App\Http\Controllers\CVController@apply');
+Route::post('user/login', 'App\Http\Controllers\UserController@login');
+
+Route::get('cv/apply', 'App\Http\Controllers\CVController@applyView');
+
+Route::post('cv/apply', 'App\Http\Controllers\CVController@create');
+
+Route::get('/test', function()
+{
+    $cvs=cv::all();
+    $users=User::all();
+ 
+    
+    
+    
+    foreach($cvs as $cv)
+    {
+        echo $cv->user->username;
+      //  echo $user->cv->phone;
+         
+         echo '<br>';
+        // if($user->cv()!=null)
+        // {
+        //     dd($user);
+        // }
+       
+        
+    }
+    foreach($users as $user)
+    {
+        echo $user->cv;
+      //  echo $user->cv->phone;
+         
+         echo '<br>';
+        // if($user->cv()!=null)
+        // {
+        //     dd($user);
+        // }
+       
+        break;
+    }
+});
 
 
 

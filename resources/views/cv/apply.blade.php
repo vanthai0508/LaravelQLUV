@@ -8,25 +8,38 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
     </head>
     <body>
-    <form name="apply" method="POST" enctype="multipart/form-data">
+    <form name="apply" method="POST" action="" enctype="multipart/form-data">
         <div class="to">
         
             <div class="form">
                 
                 <h2>APPLY</h2>
+                @if(session('error'))
+                <ul>
+                    <li class="text-danger">{{ session('error') }} </li>
+                </ul>
+
+                @endif
                 
                 <i class="fab fa-app-store-ios"></i>
-                <label style="margin-left: -150px;">Họ và tên</label>
-                <input type="text" name="username">
+
+                <label style="margin-left: -150px;">Họ và tên</label>     
+                <input type="text" name="name">
+                
                 <label style="margin-left: -190px;">Vị trí</label>
-                <input type="text" name="location">
+                <input type="text" name="position">
+
                 <label>Số điện thoại</label>
-                <input type="text" name="phone">    
+                <input type="text" name="phone">  
+
                 <label style="margin-left: -190px;">File</label>
                 <input type="file" name="file" id="file" > 
+
                 <input id="submit" type="submit" name="submitcv" value="Send">
                 
-            </div>  
+            </div> 
+            
+            @csrf
                       
         </div>
     </form>     

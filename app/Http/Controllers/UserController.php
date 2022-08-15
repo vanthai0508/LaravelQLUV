@@ -18,6 +18,12 @@ class UserController extends Controller
     {
         $this->user= $user;
     }
+    public function list()
+    {
+        $users = $this->user->list();
+
+      //  return view('user/list')->with('users',$users);
+    }
 
     public function createView()
     {
@@ -50,7 +56,7 @@ class UserController extends Controller
         // {
             if(Auth::attempt(['username' => $username, 'password' => $password]))
             {
-                return redirect('/');
+                return redirect('cv/apply');
             }
             else
             {

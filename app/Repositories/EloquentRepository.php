@@ -19,7 +19,7 @@ abstract class EloquentRepository implements EloquentInterface
 
     public function list()
     {
-
+        return $this->model->all();
     }
 
     public function create($request)
