@@ -13,7 +13,7 @@
             <div class="col-xl-6 col-lg-6 col-sm-12 m-auto">
                 <h3>Xin chào bạn </h3>
                 <p> Cảm ơn bạn đã apply </p>
-                <p> REJECTTTTT </p>
+                <p> APPROVE !!! Vui lòng đăng nhập hệ thống để xác nhận !!! </p>
 
             </div>
         </div>

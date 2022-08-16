@@ -16,7 +16,7 @@ use App\Models\cv;
 */
 
 Route::get('/', function () {
-    return view('test');
+    return view('welcome');
 });
 
 Route::get('cv/list', 'App\Http\Controllers\CVController@list');
@@ -35,7 +35,11 @@ Route::post('cv/create', 'App\Http\Controllers\CVController@create');
 
 Route::get('cv/{id}/reject', 'App\Http\Controllers\CVController@reject');
 
-Route::get('cv/approve', 'App\Http\Controllers\CVController@sendEmail');
+Route::get('cv/{idcv}/{iduser}/approve', 'App\Http\Controllers\XNController@approve');
+
+Route::get('confirm/confirm', 'App\Http\Controllers\XNController@confirmview');
+
+Route::post('confirm/confirm', 'App\Http\Controllers\XNController@confirm');
 
 Route::get('/test', function()
 {

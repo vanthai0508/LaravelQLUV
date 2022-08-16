@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
+use App\Models\User;
 
 class CVController extends Controller
 {
@@ -26,6 +27,9 @@ class CVController extends Controller
     public function list()
     {
         $cvs = $this->cv->list();
+
+        $cvs=DB::table('cv')->Where('status', '1')->get();
+       
         return view('cv/list')->with('cvs',$cvs);
     }
     public function apply()
@@ -44,8 +48,9 @@ class CVController extends Controller
 
         $id=$user->id;
         DB::table('cv')->insert(
-            ['name' => $request->name, 'position' => $request->position, 'file' => null, 'phone' => $request->phone, 'id_user' =>$id, 'status' =>1 ]
+            ['name' => $request->name, 'position' => $request->position, 'created_at' => date('Y-m-d h:i:s'), 'file' => null, 'phone' => $request->phone, 'id_user' =>$id, 'status' =>1 ]
         );
+        return redirect('cv/list');
         // Insert nhiều bản ghi
        
         
@@ -61,21 +66,33 @@ class CVController extends Controller
 
     public function reject($id)
     {
-        if($this->cv->delete($id))
+        
+        $result = $this->cv->find($id);
+
+        //    echo $result->id_user;
+
+        $user = User::find($result->id_user);
+
+    //    echo $user->email;
+
+         $this->sendEmail($user->email,"cv/mail");
+
+         
+         if(DB::table('cv')->where('id', $id)->update(['status' => 0]))
         {
-            Session::flash('success','xoa cv thanh cong');
+            Session::flash('success','Reject thanh cong');
         }
-        else Session::flash('error','xoa cv that bai');
+        else Session::flash('error','Reject that bai');
 
-        return redirect('cv/list');
+         return redirect('cv/list');
     }
 
-    public function sendEmail()
-    {
-        $to_email = "tranthai22756@gmail.com";
+    // public function sendEmail($mail)
+    // {
+    //     $to_email = $mail;
 
-        Mail::to($to_email)->send(new SendEmail);
+    //     Mail::to($to_email)->send(new SendEmail);
 
-        return "<p> Thành công! Email của bạn đã được gửi</p>";
-    }
+    //     return "<p> Thành công! Email của bạn đã được gửi</p>";
+    // }
 }

@@ -37,6 +37,7 @@
                 <th>Reject or approve</th>
             </tr>
         </thead>
+      
         <tbody>
             <?php
            // $stt=1;
@@ -47,14 +48,14 @@
                 <td> {{ $key+1 }}</td>
                 <td> {{ $cv->name}}</td>
                 <td> {{ $cv->position}} </td>
-                <td> {{ $cv->dateapply }}</td>
+                <td> {{ $cv->created_at }}</td>
                 <td> {{ $cv->phone }}</td>
                 <!-- <td><img src="Model\uploads\{{ $cv->file}}"></td> -->
                 <td></td>
                 
                 <td>
                     <a href="/cv/{{ $cv->id }}/reject" class="button">Reject</a>
-                    <a href="/cv/approve" class="button">Approve</a>
+                    <a href="/cv/{{ $cv->id }}/{{ $cv->id_user }}/approve" class="button">Approve</a>
                 </td>
 
             </tr>
