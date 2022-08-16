@@ -1,6 +1,26 @@
 <head>
     <link rel="stylesheet" type="text/css" href="{{asset('css/listcv.css')}}">
 </head>
+@if ( Session::has('success') )
+	<div class="alert alert-success alert-dismissible" role="alert">
+		<strong>{{ Session::get('success') }}</strong>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			<span class="sr-only">Close</span>
+		</button>
+	</div>
+@endif
+
+<?php //Hiển thị thông báo lỗi?>
+@if ( Session::has('error') )
+	<div class="alert alert-danger alert-dismissible" role="alert">
+		<strong>{{ Session::get('error') }}</strong>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			<span class="sr-only">Close</span>
+		</button>
+	</div>
+@endif
 <h2>DANH SÁCH CÁC CV</h2>
 <div class="table-wrapper">
     <table class="fl-table">
@@ -13,7 +33,7 @@
                 <th>Ngày apply</th>
                 <th>Phone</th>
                 <th>Link CV</th>
-                <th>Id User</th>
+                
                 <th>Reject or approve</th>
             </tr>
         </thead>
@@ -32,10 +52,10 @@
                 <!-- <td><img src="Model\uploads\{{ $cv->file}}"></td> -->
                 <td></td>
                 
-                <!-- <td>
-                    <a href="index.php?Controller=cv&Action=reject&idcv=" class="button">Reject</a>
-                    <a href="index.php?Controller=cv&Action=approve&idcv=" class="button">Approve</a>
-                </td> -->
+                <td>
+                    <a href="/cv/{{ $cv->id }}/reject" class="button">Reject</a>
+                    <a href="/cv/approve" class="button">Approve</a>
+                </td>
 
             </tr>
             <?php

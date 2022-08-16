@@ -33,6 +33,10 @@ Route::get('cv/create', 'App\Http\Controllers\CVController@applyView');
 
 Route::post('cv/create', 'App\Http\Controllers\CVController@create');
 
+Route::get('cv/{id}/reject', 'App\Http\Controllers\CVController@reject');
+
+Route::get('cv/approve', 'App\Http\Controllers\CVController@sendEmail');
+
 Route::get('/test', function()
 {
     // $cvs=cv::all();

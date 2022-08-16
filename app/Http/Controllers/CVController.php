@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ApplyRequest;
+use App\Mail\SendEmail;
 use Illuminate\Http\Request;
 use App\Models\cv;
 use PhpParser\Node\Expr\FuncCall;
@@ -10,6 +11,8 @@ use App\Repositories\Eloquent\CVRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMail;
 
 class CVController extends Controller
 {
@@ -54,5 +57,25 @@ class CVController extends Controller
         // }
         // else 
         //     Session::flash('error', 'that bai roi');
+    }
+
+    public function reject($id)
+    {
+        if($this->cv->delete($id))
+        {
+            Session::flash('success','xoa cv thanh cong');
+        }
+        else Session::flash('error','xoa cv that bai');
+
+        return redirect('cv/list');
+    }
+
+    public function sendEmail()
+    {
+        $to_email = "tranthai22756@gmail.com";
+
+        Mail::to($to_email)->send(new SendEmail);
+
+        return "<p> Thành công! Email của bạn đã được gửi</p>";
     }
 }
