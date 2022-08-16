@@ -16,7 +16,7 @@ use App\Models\cv;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('test');
 });
 
 Route::get('cv/list', 'App\Http\Controllers\CVController@list');
@@ -40,6 +40,12 @@ Route::get('cv/{idcv}/{iduser}/approve', 'App\Http\Controllers\XNController@appr
 Route::get('confirm/confirm', 'App\Http\Controllers\XNController@confirmview');
 
 Route::post('confirm/confirm', 'App\Http\Controllers\XNController@confirm');
+
+
+Route::group(['middleware' => 'User-Account'], function()
+{
+    Route::get('list-cv', 'App\Http\Controllers\CVController@list');
+});
 
 Route::get('/test', function()
 {

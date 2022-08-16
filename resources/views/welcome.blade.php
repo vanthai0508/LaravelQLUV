@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+@extends('layouts.master')
+
+@section('title', 'App - Top Page')
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{asset('css/home.css')}}">
     <title>Document</title>
@@ -14,30 +17,18 @@
             <a href="/user/login" class="button">Đăng nhập</a>
             <a href="/user/create" class="button">Đăng ký</a>
             
+            <a href="/cv/create" class="button">APPLY</a>
+            <a href="/confirm/confirm" class="button">Xác nhận</a>
+                     
+            <a href="/cv/list" class="button">Quản lý</a>
+            <a href="" class="button">UV Tham gia</a>
+
+          
+
             
+                        
 
-            <?php
-            use Illuminate\Support\Facades\Auth;
-
-            $user = Auth::user();
-            echo $user->username;
-                if(isset($user->id))
-                {
-                    if($user->role==1)
-                    { ?>
-                        <a href="/cv/create" class="button">APPLY</a>
-                        <a href="/confirm/confirm" class="button">Xác nhận</a>
-                        <?php
-                    }
-                    else 
-                    { ?>
-                        <a href="/cv/list" class="button">Quản lý</a>
-                        <a href="" class="button">UV Tham gia</a>
-
-                        <?php
-                    }
-                } 
-                else echo "Vui long dang nhap" ?>
+                        
         </div>
     </div>
     <div class="column">

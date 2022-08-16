@@ -39,7 +39,7 @@ class XNController extends Controller
 
       
         DB::table('xn')->insert(
-            [ 'dateinterview' => $dateInterview, 'id_user' => $iduser, 'id_cv' => $idcv, 'status' =>1 ]
+            [ 'dateinterview' => $dateInterview, 'id_user' => $iduser, 'id_cv' => $idcv, 'status' => 1 ]
         );
 
         $this->sendEmail($user->email,"cv/mailapprove");
@@ -52,33 +52,43 @@ class XNController extends Controller
 
         $confirm = DB::table('xn')->where('id_user', $user->id)->where('status', 1)->orderBy('dateInterview', 'desc')->limit(1)->get();
        
-       
-       
+       // $confirm=array();
+      // echo $confirm->count();
+      
+    //    if(!$obj->count())
+    //    {
+    //     echo "rong";
+    //    }
+    //    else 
+    //     echo "co";
+      //  echo is_array($confirm);
+      //  echo implode($confirm);
         // dd($confirm);
         // dd($confirm);
         // echo $confirm;
         // $confirm=array();
         // echo $confirm;
-        // if( $confirm['item'] == [] )
-        // {
-        //     echo 'khong';
-        //    Session::flash('error','CV của bạn chưa được duyệt !!!');
+        if( $confirm->count()==0)
+        {
+            
+           Session::flash('error','CV của bạn chưa được duyệt !!!');
 
-        //    return view('confirm/confirm');
+           return view('confirm/confirm');
             
           
-        // }
-        // else
-        // {
-        //    echo "co";
+
+        }
+        else
+        {
+           
          
            
-        //     $cv = cv::find($confirm[0]->id_cv);
-        //    return view('confirm/confirm', ['cv' => $cv], ['confirm' => $confirm[0]] );
-       // }
+            $cv = cv::find($confirm[0]->id_cv);
+            return view('confirm/confirm', ['cv' => $cv], ['confirm' => $confirm[0]] );
+        }
 
         
-    //   return redirect('confirm/confirm')->with('confirm', $confirm);
+        return redirect('confirm/confirm')->with('confirm', $confirm);
     }
 
     public function confirm()
