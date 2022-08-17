@@ -19,11 +19,11 @@ class UserAccount
     {
         if( Auth::check() && Auth::user()->role == 0)
         {
-           // return $next($request);
+            return $next($request);
            echo 'pass roi';
 
         }
 
-        return redirect('welcome')->with('message','Ban khong co quyen truy cap !!!');
+        return redirect('/')->with('message','Ban khong co quyen truy cap !!!');
     }
 }
