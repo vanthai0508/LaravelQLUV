@@ -8,6 +8,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmail;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 class Controller extends BaseController
 {
@@ -22,4 +24,18 @@ class Controller extends BaseController
 
         return "<p> Thành công! Email của bạn đã được gửi</p>";
     }
+    // public function lang($lang){
+    //   //  echo $langcode;
+    //    // echo "day ne";
+    //    echo $lang;
+    //    //  App::setLocale($lang);
+    //   // $locale = App::currentLocale();
+    //      if(App::setLocale('vi'))
+    //      {
+    //         return redirect('/');
+    //      }
+         
+    //     // session()->put("lang_code",$langcode);
+    //   //   return redirect()->back();
+    // } 
 }
