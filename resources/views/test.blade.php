@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Lang;
 
 
 // echo Auth::User()->role;
@@ -31,14 +32,15 @@ use Illuminate\Support\Facades\App;
     // {
     //     echo 'en';
     // }
-    
+    echo Lang::get('message.welcome');
     ?>
     {{ trans('message.welcome') }};
     <br>
 
     {{ trans('message.hello', ['name' => 'My Name']) }}
 
-    <a href="{{ route('lang',['lang' => 'vi']) }}">VI</a>
+   
 
-<a href="{{ route('lang',['lang' => 'en' ]) }}">EN</a>
+    <a href="{!! route('user.change-language', ['en']) !!}">English</a>
+    <a href="{!! route('user.change-language', ['vi']) !!}">Vietnam</a>
 

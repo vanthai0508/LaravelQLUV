@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<! doctype html>
+<html>
 <head>
-	<meta charset=UTF-8>
-	<title>@yield('title')</title>
+   @include( 'partial.head' )
 </head>
 <body>
-	@section('sidebar')
-		// Sidebar
-	@show
-
-	<div class="container">
-		@yield('content')
-	</div>
+<div class = "container" >
+   <header class = "row" >
+       @include( 'partial.header' )
+   </header>
+   <div id = "main" class = "row" >
+           @ output ( 'nội dung' )
+   </div>
+   <footer class = "row" >
+       @ include ( 'include.footer' )
+   </footer>
+</div>
 </body>
 </html>

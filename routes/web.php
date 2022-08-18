@@ -16,7 +16,7 @@ use App\Models\cv;
 */
 
 Route::get('/', function () {
-    return view('test');
+    return view('welcome');
 });
 
 Route::get('cv/list', 'App\Http\Controllers\CVController@list');
@@ -43,7 +43,7 @@ Route::post('confirm/confirm', 'App\Http\Controllers\XNController@confirm');
 
 
 
-Route::get('lang/{lang}','App\Http\Controllers\HomeController@lang')->name('lang');
+Route::get('change-language/{language}', 'App\Http\Controllers\HomeController@changeLanguage')->name('user.change-language');
 
 // Route::get('cv/list', function () {
 //     //
@@ -59,10 +59,10 @@ Route::group(['middleware' => 'User-Account'], function()
 
 });
 
-// Route::group(['middleware' => 'locale'], function() {
-//     Route::get('change-language/{langcode}', 'App\Http\Controllers\Controller@changeLanguage')
-//         ->name('user.change-language');
-// });
+Route::group(['middleware' => 'locale'], function() {
+    Route::get('change-language/{language}', 'App\Http\Controllers\HomeController@changeLanguage')
+        ->name('user.change-language');
+});
 
 Route::get('/test', function()
 {

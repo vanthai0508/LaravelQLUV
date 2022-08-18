@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
 @extends('layouts.master')
+<head>
+
 
 @section('title', 'App - Top Page')
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{asset('css/home.css')}}">
     <title>Document</title>
-</head>
 
+    @section('header')
+    @include('partial.header')
+@stop
+</head>
 <body>
     <div class="start">
-        <h1>MOR SOFTWARE JSC</h1>
+        <h1>{{ trans('message.welcome') }}</h1>
         <div class="link">
-            <a href="/user/login" class="button">Đăng nhập</a>
-            <a href="/user/create" class="button">Đăng ký</a>
+            <a href="/user/login" class="button">{{ trans('message.login') }}</a>
+            <a href="/user/create" class="button">{{ trans('message.register') }}</a>
             
-            <a href="/cv/create" class="button">APPLY</a>
-            <a href="/confirm/confirm" class="button">Xác nhận</a>
+            <a href="/cv/create" class="button">{{ trans('message.apply') }}</a>
+            <a href="/confirm/confirm" class="button">{{ trans('message.confirm') }}</a>
                      
-            <a href="/cv/list" class="button">Quản lý</a>
-            <a href="" class="button">UV Tham gia</a>
+            <a href="/cv/list" class="button">{{ trans('message.manage') }}</a>
+            <a href="" class="button">{{ trans('message.participation') }}</a>
 
           
 
@@ -90,5 +93,6 @@
     </div>
     </div>
 </body>
+
 
 </html>

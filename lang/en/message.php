@@ -1,7 +1,19 @@
 <?php
     return [
-        'welcome' => 'welcome you!!',
+        'welcome' => 'WELCOME TO MOR!!',
 
         'hello' => 'hello, :NAME',
+
+        'login' => 'Login',
+
+        'register' => 'Register',
+
+        'apply' => 'Apply',
+
+        'confirm' => 'Confirm',
+
+        'manage' => 'Manage',
+
+        'participation' => 'Participation'
     ];
 ?>
