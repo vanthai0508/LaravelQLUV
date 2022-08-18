@@ -37,10 +37,10 @@
                 <input type=" text" name="phone" id="phone">
 
                 <label style="margin-left: -190px;">File</label>
-                <input type="file" name="file" id="file">
+                <input type="file" name="file" id="file" accept="image/png/jpg/jpeg">
 
                 <input id="submit" type="submit" name="create">
-
+                
             </div>
 
             @csrf

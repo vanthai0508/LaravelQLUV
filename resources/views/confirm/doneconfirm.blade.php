@@ -30,9 +30,9 @@
                 <th>STT</th>
                 <th>Họ và tên</th>
                 <th>Vị trí</th>
-                <th>Ngày apply</th>
+                <th>Ngày phỏng vấn</th>
                 <th>Phone</th>
-                <th>Link CV</th>
+              
                 
                
             </tr>
@@ -43,20 +43,15 @@
            // $stt=1;
          //   for($i=1;$i<=sizeof($CVS);$i++){ 
             ?>
-            @foreach($cvs as $key => $cv)
+            @foreach($confirms as $key => $confirm)
             <tr>
                 <td> {{ $key+1 }}</td>
-                <td> {{ $cv->name}}</td>
-                <td> {{ $cv->position}} </td>
-                <td> {{ $cv->created_at }}</td>
-                <td> {{ $cv->phone }}</td>
-                <!-- <td><img src="Model\uploads\{{ $cv->file}}"></td> -->
-                <td></td>
+                <td> {{ $confirm->name }}</td>
+                <td> {{ $confirm->position }} </td>
+                <td> {{ $confirm->dateinterview }}</td>
+                <td> {{ $confirm->phone }}</td>
+              
                 
-                <td>
-                    <a href="/cv/{{ $cv->id }}/reject" class="button">Reject</a>
-                    <a href="/cv/{{ $cv->id }}/{{ $cv->id_user }}/approve" class="button">Approve</a>
-                </td>
 
             </tr>
             <?php

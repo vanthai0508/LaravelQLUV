@@ -32,7 +32,7 @@
                 <th>Vị trí</th>
                 <th>Ngày apply</th>
                 <th>Phone</th>
-                <th>Link CV</th>
+                <th>CV</th>
                 
                 <th>Reject or approve</th>
             </tr>
@@ -50,8 +50,8 @@
                 <td> {{ $cv->position}} </td>
                 <td> {{ $cv->created_at }}</td>
                 <td> {{ $cv->phone }}</td>
-                <!-- <td><img src="Model\uploads\{{ $cv->file}}"></td> -->
-                <td></td>
+                
+                <td> <img src="../cv/{{ $cv->file }}"> </td>
                 
                 <td>
                     <a href="/cv/{{ $cv->id }}/reject" class="button">Reject</a>

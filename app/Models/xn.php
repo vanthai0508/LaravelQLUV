@@ -18,6 +18,9 @@ class xn extends Model
         'status'
     ];
 
-
+    public function cv()
+    {
+        return $this->belongsTo('App\Models\cv', 'id_cv');
+    }
 
 }

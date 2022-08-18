@@ -26,7 +26,7 @@
             <a href="/cv/list" class="button">{{ trans('message.manage') }}</a>
             <a href="" class="button">{{ trans('message.participation') }}</a>
 
-          
+            <img src="cv/Trafalgar-Law-full.jpg">
 
             
                         

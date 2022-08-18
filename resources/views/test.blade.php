@@ -40,7 +40,7 @@ use Illuminate\Support\Facades\Lang;
     {{ trans('message.hello', ['name' => 'My Name']) }}
 
    
-
+    <img src="cv/Trafalgar-Law-full.jpg">
     <a href="{!! route('user.change-language', ['en']) !!}">English</a>
     <a href="{!! route('user.change-language', ['vi']) !!}">Vietnam</a>
 

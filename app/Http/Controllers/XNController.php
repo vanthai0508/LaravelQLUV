@@ -17,60 +17,51 @@ class XNController extends Controller
     protected $xn;
     public function __construct(XNRepository $xn)
     {
-        $this->xn=$xn;
+        $this->xn = $xn;
     }
 
 
     public function approve($idcv, $iduser)
     {
-    //    echo $idcv;
+   
         $cv = cv::find($idcv);
 
-
-        //echo $cv;
 
         $user = User::find($iduser);
         $date = date('y-m-d h:i:s');
 
-        $dateInter = strtotime ( '+2 day' , strtotime ( $date) ) ;
+        $dateInter = strtotime ('+2 day', strtotime ( $date) ) ;
 
         $dateInterview = date("y-m-d h:i:s", $dateInter);
-    //    echo $dateInterview;
 
       
         DB::table('xn')->insert(
-            [ 'dateinterview' => $dateInterview, 'id_user' => $iduser, 'id_cv' => $idcv, 'status' => 1 ]
+            [ 'dateinterview' => $dateInterview, 'id_user' => $iduser, 'id_cv' => $idcv, 'name' => $cv->name, 'position' => $cv->position, 'phone' => $cv->phone, 'status' => 1 ]
         );
 
-        $this->sendEmail($user->email,"cv/mailapprove");
+        if(DB::table('cv')->where('id', $idcv)->update(['status' => 0]))
+        {
+            Session::flash('success','Approve thanh cong');
+        }
+        else Session::flash('error','Aprove that bai');
+
+
+        $this->sendEmail($user->email, "cv/mailapprove");
+
+        return redirect()->back();
     }
 
+    //ham tra ve don confirm cho user
     public function confirmview()
     {
-        $user=Auth::user();
+        $user = Auth::user();
         
 
         $confirm = DB::table('xn')->where('id_user', $user->id)->where('status', 1)->orderBy('dateInterview', 'desc')->limit(1)->get();
        
-       // $confirm=array();
-      // echo $confirm->count();
-      
-    //    if(!$obj->count())
-    //    {
-    //     echo "rong";
-    //    }
-    //    else 
-    //     echo "co";
-      //  echo is_array($confirm);
-      //  echo implode($confirm);
-        // dd($confirm);
-        // dd($confirm);
-        // echo $confirm;
-        // $confirm=array();
-        // echo $confirm;
-        if( $confirm->count()==0)
+   
+        if( $confirm->count() == 0)
         {
-            
            Session::flash('error','CV của bạn chưa được duyệt !!!');
 
            return view('confirm/confirm');
@@ -80,24 +71,30 @@ class XNController extends Controller
         }
         else
         {
-           
-         
-           
             $cv = cv::find($confirm[0]->id_cv);
             return view('confirm/confirm', ['cv' => $cv], ['confirm' => $confirm[0]] );
         }
 
         
-        return redirect('confirm/confirm')->with('confirm', $confirm);
     }
 
+    // ham confirm cho user
     public function confirm()
     {
-        $user=Auth::user();
+        $user = Auth::user();
 
         if (DB::table('xn')->where('id_user', $user->id)->update(['status' => 0]))
         {
             return view('welcome');
         }
+    }
+
+    // ham tra ve list user tham gia phong van
+    public function listDoneConfirm()
+    {
+        $confirms = DB::table('xn')->where('status', 0)->distinct()->get();
+      //  $confirms = DB::table('xn')->select(DB::raw('DISTINCT id_user, COUNT(*) AS count_id_user'))->groupBy('id_user')->orderBy('count_id_user', 'desc')->get();
+        
+        return view('confirm/doneconfirm', ['confirms' => $confirms]);
     }
 }

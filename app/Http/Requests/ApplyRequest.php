@@ -27,7 +27,7 @@ class ApplyRequest extends FormRequest
             'name' => 'required',
             'position' => 'required',
             'phone' => 'required',
-            'file'
+            'file' => ['required', 'image'],
 
         ];
     }

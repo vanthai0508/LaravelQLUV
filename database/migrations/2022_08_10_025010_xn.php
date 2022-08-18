@@ -20,6 +20,9 @@ return new class extends Migration
             $table->foreign('id_user')->references('id')->on('users');
             $table->integer('id_cv')->unsigned()->nullable();
             $table->foreign('id_cv')->references('id')->on('cv');
+            $table->string('name');
+            $table->string('phone');
+            $table->string('position');
             $table->increments('id');
             $table->integer('status');
         });

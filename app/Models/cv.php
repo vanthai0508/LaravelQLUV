@@ -32,5 +32,10 @@ class cv extends Model
         return $this->belongsTo('App\Models\User','id_user');
     }
 
+    public function confirm()
+    {
+        return $this->hasOne('App\Models\xn', 'id_cv', 'id');
+    }
+
     
 }

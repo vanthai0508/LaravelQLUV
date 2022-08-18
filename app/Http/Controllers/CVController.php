@@ -41,16 +41,49 @@ class CVController extends Controller
     {
         return view('cv/create');
     }
+    public function storeImage(ApplyRequest $request) {
+        $path = $request->file('file')->store('public/cv');
+        return substr($path, strlen('public/'));
+      }
 
     public function create(ApplyRequest $request)
     {   
         $user=Auth::user();
 
-        $id=$user->id;
+        if ($request->hasFile('file')) {
+            $file = $request->file;
+
+            //Lấy Tên files
+         //   echo 'Tên Files: ' . $file->getClientOriginalName();
+         //   echo '<br/>';
+
+            //Lấy Đuôi File
+            // echo 'Đuôi file: ' . $file->getClientOriginalExtension();
+            // echo '<br/>';
+
+            //Lấy đường dẫn tạm thời của file
+          //  echo 'Đường dẫn tạm: ' . $file->getRealPath();
+          //  echo '<br/>';
+
+            //Lấy kích cỡ của file đơn vị tính theo bytes
+          //  echo 'Kích cỡ file: ' . $file->getSize();
+           // echo '<br/>';
+
+            //Lấy kiểu file
+         //   echo 'Kiểu files: ' . $file->getMimeType();
+
+            $file->move('cv', $file->getClientOriginalName());
+
+            $link = $file->getClientOriginalName();
+
+         $id=$user->id;
+        // echo $request->file('file')->store('public/profile');
+        // $path = $request->file('file')->store('public/profile');
+        // $link = substr($path, strlen('public/'));
         DB::table('cv')->insert(
-            ['name' => $request->name, 'position' => $request->position, 'created_at' => date('Y-m-d h:i:s'), 'file' => null, 'phone' => $request->phone, 'id_user' =>$id, 'status' =>1 ]
+            ['name' => $request->name, 'position' => $request->position, 'created_at' => date('Y-m-d h:i:s'), 'file' => null, 'phone' => $request->phone, 'file' => $link, 'id_user' =>$id, 'status' =>1 ]
         );
-        return redirect('cv/list');
+    //    return redirect('cv/list');
         // Insert nhiều bản ghi
        
         
@@ -62,6 +95,7 @@ class CVController extends Controller
         // }
         // else 
         //     Session::flash('error', 'that bai roi');
+        }
     }
 
     public function reject($id)
