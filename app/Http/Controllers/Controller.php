@@ -15,6 +15,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+
+    //ham send mail
     public function sendEmail($mail,$email)
     {
         
@@ -24,18 +26,5 @@ class Controller extends BaseController
 
         return "<p> Thành công! Email của bạn đã được gửi</p>";
     }
-    // public function lang($lang){
-    //   //  echo $langcode;
-    //    // echo "day ne";
-    //    echo $lang;
-    //    //  App::setLocale($lang);
-    //   // $locale = App::currentLocale();
-    //      if(App::setLocale('vi'))
-    //      {
-    //         return redirect('/');
-    //      }
-         
-    //     // session()->put("lang_code",$langcode);
-    //   //   return redirect()->back();
-    // } 
+    
 }

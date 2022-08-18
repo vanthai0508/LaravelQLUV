@@ -24,9 +24,9 @@
             <a href="/confirm/confirm" class="button">{{ trans('message.confirm') }}</a>
                      
             <a href="/cv/list" class="button">{{ trans('message.manage') }}</a>
-            <a href="" class="button">{{ trans('message.participation') }}</a>
+            <a href="/confirm/doneconfirm" class="button">{{ trans('message.participation') }}</a>
 
-            <img src="cv/Trafalgar-Law-full.jpg">
+            
 
             
                         

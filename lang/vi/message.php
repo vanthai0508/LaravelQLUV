@@ -14,7 +14,13 @@
 
         'manage' => 'Quản lý',
 
-        'participation' => 'UV tham gia'
+        'participation' => 'UV tham gia',
+
+        'name' => 'Họ và tên',
+
+        'position' => 'Vị trí',
+
+        'phone' => 'Số điện thoại'
     ];
 
 ?>

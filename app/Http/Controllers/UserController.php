@@ -16,8 +16,10 @@ class UserController extends Controller
 
     public function __construct(UserRepository $user)
     {
-        $this->user= $user;
+        $this->user = $user;
     }
+
+    //ham tra ve list user
     public function list()
     {
         $users = $this->user->list();
@@ -25,11 +27,13 @@ class UserController extends Controller
       //  return view('user/list')->with('users',$users);
     }
 
+    //ham tra ve view dang ky
     public function createView()
     {
         return view('user/create');
     }
 
+    //ham dang ky
     public function create(Request $request)
     {
         if($this->user->create($request))
@@ -41,36 +45,28 @@ class UserController extends Controller
         
     }
 
+    //ham tra ve view dang nhap
     public function loginView()
     {
         return view('user/login');
     }
 
+    //ham login
     public function login(LoginRequest $request)
     {
-        // $users=User::get();
-
-        // echo $users;
+        
         $username = $request->username;
         $password = $request->password;
-        // {
+        
             if(Auth::attempt(['username' => $username, 'password' => $password]))
             {
-                return redirect('cv/create');
+                return view('welcome');
             }
             else
             {
                 return redirect()->back()->with('status', 'Username hoac Password khong dung');
             
             }
-        // if( (Auth) ==true)
-        // {
-        //     return redirect('user/create');
-        // }
-        // else
-        // {
-        //     return redirect()->back()->with('status', 'Username hoac Password khong dung'.$request->password);
-            
-        // }
+        
     }
 }

@@ -20,7 +20,7 @@ class XNController extends Controller
         $this->xn = $xn;
     }
 
-
+    //ham approve
     public function approve($idcv, $iduser)
     {
    
@@ -41,9 +41,9 @@ class XNController extends Controller
 
         if(DB::table('cv')->where('id', $idcv)->update(['status' => 0]))
         {
-            Session::flash('success','Approve thanh cong');
+            Session::flash('success', 'Approve thanh cong');
         }
-        else Session::flash('error','Aprove that bai');
+        else Session::flash('error', 'Aprove that bai');
 
 
         $this->sendEmail($user->email, "cv/mailapprove");
@@ -93,8 +93,7 @@ class XNController extends Controller
     public function listDoneConfirm()
     {
         $confirms = DB::table('xn')->where('status', 0)->distinct()->get();
-      //  $confirms = DB::table('xn')->select(DB::raw('DISTINCT id_user, COUNT(*) AS count_id_user'))->groupBy('id_user')->orderBy('count_id_user', 'desc')->get();
-        
+     
         return view('confirm/doneconfirm', ['confirms' => $confirms]);
     }
 }

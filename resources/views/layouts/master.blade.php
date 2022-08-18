@@ -9,10 +9,10 @@
        @include( 'partial.header' )
    </header>
    <div id = "main" class = "row" >
-           @ output ( 'nội dung' )
+           
    </div>
    <footer class = "row" >
-       @ include ( 'include.footer' )
+      
    </footer>
 </div>
 </body>

@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+@extends('layouts.master')
 
 <head>
     <title>Đăng kí</title>
@@ -27,17 +28,17 @@
 
                 <i class="fab fa-app-store-ios"></i>
 
-                <label style="margin-left: -150px;">Họ và tên</label>
+                <label style="margin-left: -150px;"> {{ trans("message.name")}} </label>
                 <input type="text" name="name" id="name">
 
-                <label style="margin-left: -190px;">Vị trí</label>
+                <label style="margin-left: -190px;"> {{trans("message.position")}}</label>
                 <input type="text" name="position" id="position">
 
-                <label>Số điện thoại</label>
-                <input type=" text" name="phone" id="phone">
+                <label>{{trans("message.phone")}}</label>
+                <input style="margin-left: -130px;" type=" text" name="phone" id="phone">
 
-                <label style="margin-left: -190px;">File</label>
-                <input type="file" name="file" id="file" accept="image/png/jpg/jpeg">
+                <label style="margin-left: -200px;">File</label>
+                <input style="margin-left: -30px;" type="file" name="file" id="file" accept="image/png/jpg/jpeg">
 
                 <input id="submit" type="submit" name="create">
                 

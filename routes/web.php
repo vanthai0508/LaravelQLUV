@@ -47,10 +47,8 @@ Route::get('confirm/doneconfirm', 'App\Http\Controllers\XNController@listDoneCon
 
 Route::get('change-language/{language}', 'App\Http\Controllers\HomeController@changeLanguage')->name('user.change-language');
 
-// Route::get('cv/list', function () {
-//     //
-// })->middleware('User-Account');
-Route::group(['middleware' => 'User-Account'], function()
+// middleware quyen admin
+Route::group(['middleware' => 'User-Account-Admin'], function()
 {
     Route::get('cv/list', 'App\Http\Controllers\CVController@list');
     
@@ -58,9 +56,25 @@ Route::group(['middleware' => 'User-Account'], function()
 
     Route::get('cv/{idcv}/{iduser}/approve', 'App\Http\Controllers\XNController@approve');
 
+    Route::get('confirm/doneconfirm', 'App\Http\Controllers\XNController@listDoneConfirm');
+
     
 });
 
+Route::group(['middleware' => 'User-Account'], function()
+{
+    Route::get('cv/create', 'App\Http\Controllers\CVController@applyView');
+
+    Route::post('cv/create', 'App\Http\Controllers\CVController@create');
+
+    Route::get('confirm/confirm', 'App\Http\Controllers\XNController@confirmview');
+
+    Route::post('confirm/confirm', 'App\Http\Controllers\XNController@confirm');
+
+
+});
+
+// middleware da ngon ngu giao dien
 Route::group(['middleware' => 'locale'], function() {
     Route::get('change-language/{language}', 'App\Http\Controllers\HomeController@changeLanguage')
         ->name('user.change-language');

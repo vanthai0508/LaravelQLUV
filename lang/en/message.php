@@ -14,6 +14,12 @@
 
         'manage' => 'Manage',
 
-        'participation' => 'Participation'
+        'participation' => 'Participation',
+
+        'name' => 'Name',
+
+        'position' => 'Position',
+
+        'phone' => 'Phone'
     ];
 ?>
